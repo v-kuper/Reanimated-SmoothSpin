@@ -12,13 +12,19 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
+const CARD_WIDTH = 200
+const CARD_HEIGHT = 300
+const CARD_RADIUS = 10
+const SPIN_DURATION = 5000
+const ROTATE_DEG = 360
+
 export const SmoothSpin = () => {
   const animation = useSharedValue(0)
 
   useEffect(() => {
     animation.value = withRepeat(
-      withTiming(360, {
-        duration: 5000,
+      withTiming(ROTATE_DEG, {
+        duration: SPIN_DURATION,
         easing: Easing.linear,
       }),
       -1,
@@ -58,22 +64,22 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     padding: 3,
     backgroundColor: 'black',
-    borderRadius: 13,
+    borderRadius: CARD_RADIUS + 3,
     alignItems: 'center',
   },
   rotateContainer: {
     position: 'absolute',
-    top: -100,
-    bottom: -100,
-    width: 150,
+    top: -(CARD_WIDTH / 2),
+    bottom: -(CARD_WIDTH / 2),
+    width: CARD_HEIGHT / 2,
     backgroundColor: '#FF1E56',
     alignSelf: 'center',
   },
   card: {
-    width: 200,
-    height: 300,
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT,
     backgroundColor: 'black',
-    borderRadius: 10,
+    borderRadius: CARD_RADIUS,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1,
