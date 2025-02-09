@@ -2,18 +2,18 @@
  * @author Vitali
  * @created at 2025
  */
-import React, {useEffect} from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react'
+import {StatusBar, StyleSheet, Text, View} from 'react-native'
 import Animated, {
   Easing,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
   withTiming,
-} from 'react-native-reanimated';
+} from 'react-native-reanimated'
 
 export const SmoothSpin = () => {
-  const animation = useSharedValue(0);
+  const animation = useSharedValue(0)
 
   useEffect(() => {
     animation.value = withRepeat(
@@ -23,16 +23,16 @@ export const SmoothSpin = () => {
       }),
       -1,
       false,
-    );
+    )
 
     return () => {
-      animation.value = 0;
-    };
-  }, []);
+      animation.value = 0
+    }
+  }, [])
 
   const animationStyle = useAnimatedStyle(() => ({
     transform: [{rotate: `${animation.value}deg`}],
-  }));
+  }))
 
   return (
     <View style={styles.wrapper}>
@@ -44,8 +44,8 @@ export const SmoothSpin = () => {
         <Animated.View style={[styles.rotateContainer, animationStyle]} />
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
   },
   container: {
     overflow: 'hidden',
-    padding: 4,
+    padding: 3,
     backgroundColor: 'black',
-    borderRadius: 14,
+    borderRadius: 13,
     alignItems: 'center',
   },
   rotateContainer: {
@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
     height: 300,
     backgroundColor: 'black',
     borderRadius: 10,
-    padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1,
@@ -85,4 +84,4 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontWeight: '600',
   },
-});
+})
